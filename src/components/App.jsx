@@ -4,34 +4,8 @@ import { Section } from './Section';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Statistics } from './Statistics';
 import { Notification } from './Notification';
-
-const OPTIONS = {
-  good: 'good',
-  neutral: 'neutral',
-  bad: 'bad',
-};
-
-const initialState = {
-  good: 0,
-  neutral: 0,
-  bad: 0,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case OPTIONS.good: {
-      return { ...state, good: state.good + 1 };
-    }
-    case OPTIONS.neutral: {
-      return { ...state, neutral: state.neutral + 1 };
-    }
-    case OPTIONS.bad: {
-      return { ...state, bad: state.bad + 1 };
-    }
-    default:
-      throw Error('Unknown action: ' + action.type);
-  }
-}
+import { reducer } from 'utils';
+import { initialState } from 'constants';
 
 export const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
