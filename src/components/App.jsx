@@ -5,10 +5,10 @@ import { FeedbackOptions } from './FeedbackOptions';
 import { Statistics } from './Statistics';
 import { Notification } from './Notification';
 
-const options = {
-  GOOD: 'good',
-  NEUTRAL: 'neutral',
-  BAD: 'bad',
+const OPTIONS = {
+  good: 'good',
+  neutral: 'neutral',
+  bad: 'bad',
 };
 
 const initialState = {
@@ -19,13 +19,13 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case options.GOOD: {
+    case OPTIONS.good: {
       return { ...state, good: state.good + 1 };
     }
-    case options.NEUTRAL: {
+    case OPTIONS.neutral: {
       return { ...state, neutral: state.neutral + 1 };
     }
-    case options.BAD: {
+    case OPTIONS.bad: {
       return { ...state, bad: state.bad + 1 };
     }
     default:
@@ -44,9 +44,7 @@ export const App = () => {
   };
 
   const leaveFeedback = name => {
-    if (name === options.GOOD) dispatch({ type: options.GOOD });
-    if (name === options.BAD) dispatch({ type: options.BAD });
-    if (name === options.NEUTRAL) dispatch({ type: options.NEUTRAL });
+    dispatch({ type: name });
   };
 
   const total = countTotalFeedback(state);
